@@ -107,6 +107,31 @@ a {
   margin-bottom: 1rem;
 }
 
+.form {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.search-button {
+  background-color: #ff4e00;
+  color: #fff;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1.6rem;
+}
+
+.url-input {
+  width: 100%;
+  padding: 1rem 2rem;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  font-size: 1.6rem;
+}
+
 .features {
   display: flex;
   flex-direction: column;
