@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-bottom: 5rem;
+}
+
+.logo-name {
+  background-color: #ff4e00;
+  color: #fff;
+  padding: 1rem 2rem;
+  width: max-content;
+  border-radius: 1rem;
+}
+
+.status {
+  font-size: 2.5rem;
+}
+
+.online {
+  color: #2fcc66;
+}
+
+.offline {
+  color: #ff0000;
+}
+
+.introduction {
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  margin-bottom: 6rem;
+}
+
+.site-url {
+  font-size: 1.6rem;
+  color: #666;
+}
+
+.image {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.8rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  background-color: #ff4e00;
+  color: #fff;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1.6rem;
+}
+
+.cta-button:hover {
+  background-color: #ff6c3b;
+}
+
+.center {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.site-name {
+  font-size: 2.5rem;
+  color: #ff4e00;
+  margin-bottom: 1rem;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.features .feature {
+  width: 30%;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.feature-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.features .title {
+  font-size: 2.5rem;
+}
+
+.feature-image {
+  width: 50%;
+  margin-bottom: 2rem;
+}
+
+.footer {
+  color: #fff;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: #000;
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.6rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
