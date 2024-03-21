@@ -1,12 +1,20 @@
 <?php
+
+include('protect.php');
+
+// Inicia a sessão se não estiver iniciada
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 function checkWebSite($url)
 {
     if (!filter_var($url, FILTER_VALIDATE_URL)) {
-        return 'offline';
+        return '<p class="status offline">❌ offline</p>';
     }
 
     if (!function_exists('curl_init')) {
-        return 'offline';
+        return '<p class="status offline">❌ offline</p>';
     }
 
     $ch = curl_init($url);
@@ -26,6 +34,23 @@ function checkWebSite($url)
         return '<p class="status online">✅ online</p>';
     }
 }
+
+// Inicializa a variável $resultado_html se ainda não estiver definida na sessão
+if (!isset($_SESSION['resultado_html'])) {
+    $_SESSION['resultado_html'] = '';
+}
+
+// Verifica se o formulário foi submetido
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $site = $_GET['site'];
+    $status = checkWebSite($site);
+
+    // Concatena o HTML para exibir os resultados da pesquisa
+    $_SESSION['resultado_html'] .= "<div class='row'>";
+    $_SESSION['resultado_html'] .= "<span class='site-url'>$site</span>";
+    $_SESSION['resultado_html'] .= checkWebSite($site);
+    $_SESSION['resultado_html'] .= "</div>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,16 +60,21 @@ function checkWebSite($url)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site Checker | Sites</title>
-    <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 
 <body>
 
     <main class="center">
         <header class="header">
-            <a href="./index.html">
-                <img src="./src/images/site-checker-logo.png" alt="">
+            <a href="../../index.html">
+                <img src="../images/site-checker-logo.png" alt="">
             </a>
+
+            <p>Bem vindo ao Site Checker, <?php echo $_SESSION['nome'];  ?></p>
+
+            <a href="./logout.php">Sair</a>
         </header>
 
         <form method="get" class="form">
@@ -52,6 +82,13 @@ function checkWebSite($url)
             <button type="submit" class="search-button">Pesquisar</button>
 
         </form>
+
+        <section>
+            <h2 class="section-title">Suas Pesquisas</h2>
+            <div class="table">
+                <?php echo isset($_SESSION['resultado_html']) ? $_SESSION['resultado_html'] : ''; ?>
+            </div>
+        </section>
 
         <section>
             <h2 class="section-title">Principais sites</h2>
