@@ -1,8 +1,6 @@
 <?php
-
 include('protect.php');
 
-// Inicia a sessão se não estiver iniciada
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -35,21 +33,20 @@ function checkWebSite($url)
     }
 }
 
-// Inicializa a variável $resultado_html se ainda não estiver definida na sessão
 if (!isset($_SESSION['resultado_html'])) {
     $_SESSION['resultado_html'] = '';
 }
 
-// Verifica se o formulário foi submetido
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['site'])) {
     $site = $_GET['site'];
     $status = checkWebSite($site);
 
-    // Concatena o HTML para exibir os resultados da pesquisa
-    $_SESSION['resultado_html'] .= "<div class='row'>";
-    $_SESSION['resultado_html'] .= "<span class='site-url'>$site</span>";
-    $_SESSION['resultado_html'] .= checkWebSite($site);
-    $_SESSION['resultado_html'] .= "</div>";
+    $resultado = "<div class='row'>";
+    $resultado .= "<span class='site-url'>$site</span>";
+    $resultado .= $status;
+    $resultado .= "</div>";
+
+    $_SESSION['resultado_html'] .= $resultado;
 }
 ?>
 
@@ -80,13 +77,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         <form method="get" class="form">
             <input type="text" name="site" id="site" placeholder="Digite a URL do site (ex: https://www.example.com)" class="url-input">
             <button type="submit" class="search-button">Pesquisar</button>
-
         </form>
 
         <section>
             <h2 class="section-title">Suas Pesquisas</h2>
             <div class="table">
-                <?php echo isset($_SESSION['resultado_html']) ? $_SESSION['resultado_html'] : ''; ?>
+                <?php echo !empty($_SESSION['resultado_html']) ? $_SESSION['resultado_html'] : 'Nenhuma pesquisa realizada ainda.'; ?>
             </div>
         </section>
 
