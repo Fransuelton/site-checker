@@ -1,6 +1,6 @@
 # Site Checker
 
-[Site Checker Image](./src/images/readme.jpg)
+![Site Checker Image](./src/images/readme.jpg)
 
 O Site Checker é uma aplicação web desenvolvida para verificar o status de diferentes sites, informando se estão online ou offline. Esta aplicação foi desenvolvida utilizando tecnologias web comuns, como PHP, HTML, CSS e agora inclui também o MySQL e um sistema de login simples.
 
